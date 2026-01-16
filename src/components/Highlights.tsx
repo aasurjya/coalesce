@@ -174,9 +174,9 @@ export default function Highlights() {
               <div className="relative z-10 h-full p-6 md:p-8 flex flex-col justify-end">
                 {/* Icon */}
                 <div
-                  className={`icon-container inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${highlight.color} mb-4 md:mb-6 shadow-xl relative overflow-hidden group/icon`}
+                  className={`icon-container inline-flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-gradient-to-br ${highlight.color} mb-4 md:mb-6 shadow-xl relative overflow-hidden group/icon transition-transform duration-500 group-hover:scale-110`}
                 >
-                  <highlight.icon className="w-6 h-6 md:w-7 md:h-7 text-white relative z-10" />
+                  <highlight.icon className="w-5 h-5 md:w-6 md:h-6 text-white relative z-10" />
                   <div className="absolute inset-0 bg-white/20 translate-y-full group-hover/icon:translate-y-0 transition-transform duration-300" />
                 </div>
 

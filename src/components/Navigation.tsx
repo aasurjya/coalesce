@@ -97,9 +97,10 @@ export default function Navigation({ isVisible }: { isVisible: boolean }) {
                 <Magnetic key={link.href} strength={0.3}>
                   <Link
                     href={link.href}
-                    className="btn-gold px-8 py-2.5 rounded-full text-sm font-bold tracking-widest uppercase transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]"
+                    className="group relative px-8 py-2.5 rounded-full bg-gold text-navy text-sm font-black tracking-[0.2em] uppercase shadow-[0_0_20px_rgba(212,175,55,0.2)] transition-all duration-500 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] overflow-hidden"
                   >
-                    {link.label}
+                    <span className="relative z-10">{link.label}</span>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                   </Link>
                 </Magnetic>
               ) : (
@@ -107,10 +108,10 @@ export default function Navigation({ isVisible }: { isVisible: boolean }) {
                   <Link
                     href={link.href}
                     onClick={(e) => handleLinkClick(e, link.href)}
-                    className="relative text-foreground/60 hover:text-gold transition-colors text-xs font-bold uppercase tracking-[0.2em] group"
+                    className="relative text-foreground/40 hover:text-gold transition-all duration-500 text-[10px] font-black uppercase tracking-[0.3em] group/link"
                   >
                     {link.label}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold transition-all duration-300 group-hover:w-full" />
+                    <span className="absolute -bottom-1.5 left-0 w-0 h-px bg-gold transition-all duration-500 group-hover/link:w-full" />
                   </Link>
                 </Magnetic>
               )

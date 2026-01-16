@@ -93,45 +93,58 @@ export default function About() {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-20 md:mb-24">
           {/* Decorative Image */}
-          <div ref={imageRef} className="relative aspect-[4/5] sm:aspect-video lg:aspect-square rounded-[2rem] overflow-hidden group shadow-2xl">
-            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent z-10 opacity-80" />
+          <div ref={imageRef} className="relative aspect-[4/5] sm:aspect-video lg:aspect-square rounded-[3rem] overflow-hidden group shadow-2xl border border-gold/10">
+            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent z-10 opacity-90" />
             <Image 
               src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2669&auto=format&fit=crop" 
               alt="Event Atmosphere" 
               fill
+              priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000 ease-out"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
             />
-            <div className="absolute bottom-8 left-8 z-20">
-              <div className="award-card p-6 rounded-2xl backdrop-blur-xl border-gold/30">
-                <p className="text-gold font-black text-2xl tracking-tighter mb-1">Since 2018</p>
-                <p className="text-foreground/70 text-xs font-bold uppercase tracking-widest">Empowering Student Leaders</p>
+            
+            {/* Glossy overlay effect */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
+            
+            <div className="absolute bottom-10 left-10 z-20">
+              <div className="award-card p-8 rounded-[2rem] backdrop-blur-2xl border-gold/40 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-2 transition-transform duration-700">
+                <p className="text-gold font-black text-3xl tracking-tighter mb-1 italic">Since 2018</p>
+                <p className="text-foreground/50 text-[10px] font-black uppercase tracking-[0.3em]">Empowering Student Leaders</p>
               </div>
             </div>
+
+            {/* Corner Accents */}
+            <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-gold/20 rounded-tl-2xl group-hover:border-gold/60 transition-colors duration-700" />
+            <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-gold/20 rounded-br-2xl group-hover:border-gold/60 transition-colors duration-700" />
           </div>
 
           {/* Content */}
           <div ref={contentRef} className="space-y-8 md:space-y-10">
-            <div className="award-card rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden group transition-all duration-500 hover:border-gold/40">
-              <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-                <Trophy className="w-32 h-32 text-gold -rotate-12" />
+            <div className="award-card rounded-[3rem] p-10 md:p-14 relative overflow-hidden group transition-all duration-700 hover:border-gold/40 shadow-2xl">
+              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-15 transition-all duration-1000 group-hover:rotate-12 group-hover:scale-110">
+                <Trophy className="w-48 h-48 text-gold" />
               </div>
               
               <div className="relative z-10">
-                <p className="text-lg md:text-xl text-foreground/90 font-medium leading-relaxed mb-8">
+                <p className="text-xl md:text-2xl text-foreground/90 font-medium leading-relaxed mb-10 tracking-tight">
                   {EVENT_INFO.description}
                 </p>
-                <div className="flex flex-col gap-8">
-                  <div className="relative pl-8">
-                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-gold to-transparent rounded-full" />
-                    <p className="text-foreground/60 leading-relaxed text-base md:text-lg italic font-medium">
+                <div className="flex flex-col gap-10">
+                  <div className="relative pl-10">
+                    <div className="absolute left-0 top-2 bottom-2 w-1.5 bg-gradient-to-b from-gold via-gold/50 to-transparent rounded-full shadow-[0_0_15px_rgba(212,175,55,0.5)]" />
+                    <p className="text-foreground/70 leading-relaxed text-lg md:text-xl italic font-medium tracking-tight">
                       &quot;COALESCE isn&apos;t just an event; it&apos;s a movement that brings together the brightest minds to define the future of technology and culture.&quot;
                     </p>
                   </div>
-                  <p className="text-foreground/70 leading-relaxed text-sm md:text-base font-medium">
-                    Join us at <span className="text-gold font-bold underline decoration-gold/30 underline-offset-4">{EVENT_INFO.venue}</span> for
-                    an immersive experience that blends competitive spirit with professional networking.
-                  </p>
+                  <div className="flex items-center gap-4 group/venue cursor-default">
+                    <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/20 group-hover/venue:bg-gold group-hover/venue:text-navy transition-all duration-500">
+                      <Zap className="w-6 h-6" />
+                    </div>
+                    <p className="text-foreground/80 leading-relaxed text-sm md:text-lg font-bold tracking-tight">
+                      Join us at <span className="text-gold group-hover/venue:underline decoration-gold/30 underline-offset-8 transition-all">{EVENT_INFO.venue}</span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

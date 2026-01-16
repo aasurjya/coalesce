@@ -18,6 +18,7 @@ import {
   ArrowLeft,
   Sparkles,
   AlertCircle,
+  Trophy,
 } from 'lucide-react';
 import { EVENT_INFO } from '@/lib/constants';
 

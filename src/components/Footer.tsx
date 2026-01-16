@@ -87,9 +87,9 @@ export default function Footer() {
                 <li key={idx}>
                   <Link 
                     href={link.href} 
-                    className="text-foreground/40 hover:text-gold transition-all duration-300 text-sm font-bold uppercase tracking-widest hover:translate-x-2 inline-flex items-center gap-2 group"
+                    className="text-foreground/40 hover:text-gold transition-all duration-500 text-sm font-black uppercase tracking-widest hover:translate-x-3 inline-flex items-center gap-3 group/nav"
                   >
-                    <span className="w-0 h-px bg-gold transition-all duration-300 group-hover:w-4" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-gold/20 group-hover/nav:bg-gold group-hover/nav:scale-125 transition-all duration-500" />
                     {link.label}
                   </Link>
                 </li>
@@ -101,20 +101,20 @@ export default function Footer() {
           <div className="space-y-8">
             <h3 className="text-gold text-[10px] font-black tracking-[0.4em] uppercase opacity-60">Connect</h3>
             <ul className="space-y-6">
-              <li className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-navy-light flex items-center justify-center border border-gold/5 text-gold/40 group-hover:border-gold/40 group-hover:text-gold transition-all duration-300 shrink-0">
-                  <MapPin className="w-4 h-4" />
+              <li className="flex items-start gap-4 group/item">
+                <div className="w-12 h-12 rounded-xl bg-navy-light/50 flex items-center justify-center border border-gold/5 text-gold/40 group-hover/item:border-gold/40 group-hover/item:text-gold group-hover/item:bg-gold/10 transition-all duration-500 shrink-0">
+                  <MapPin className="w-5 h-5" />
                 </div>
-                <span className="text-foreground/40 text-xs font-bold uppercase tracking-wider leading-relaxed pt-1 group-hover:text-foreground/60 transition-colors">
+                <span className="text-foreground/40 text-[11px] font-bold uppercase tracking-wider leading-relaxed pt-1 group-hover:text-foreground/70 transition-colors">
                   {EVENT_INFO.venue}<br />
                   {EVENT_INFO.location}
                 </span>
               </li>
-              <li className="flex items-center gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-navy-light flex items-center justify-center border border-gold/5 text-gold/40 group-hover:border-gold/40 group-hover:text-gold transition-all duration-300 shrink-0">
-                  <Mail className="w-4 h-4" />
+              <li className="flex items-center gap-4 group/item">
+                <div className="w-12 h-12 rounded-xl bg-navy-light/50 flex items-center justify-center border border-gold/5 text-gold/40 group-hover/item:border-gold/40 group-hover/item:text-gold group-hover/item:bg-gold/10 transition-all duration-500 shrink-0">
+                  <Mail className="w-5 h-5" />
                 </div>
-                <a href="mailto:contact@coalesce.event" className="text-foreground/40 hover:text-gold transition-colors text-xs font-black uppercase tracking-widest">
+                <a href="mailto:contact@coalesce.event" className="text-foreground/40 hover:text-gold transition-colors text-[11px] font-black uppercase tracking-[0.15em] pt-0.5">
                   contact@coalesce.event
                 </a>
               </li>

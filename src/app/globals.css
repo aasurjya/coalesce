@@ -218,69 +218,53 @@ body {
   background: var(--gold);
 }
 
-/* Selection styling */
-::selection {
-  background: rgba(212, 175, 55, 0.3);
-  color: var(--foreground);
-}
-
-/* Loading spinner */
-.spinner-gold {
-  border: 3px solid rgba(212, 175, 55, 0.2);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Step indicator */
-.step-indicator {
-  position: relative;
-}
-
-.step-indicator::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 100%;
+/* Grain texture overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 2px;
-  background: rgba(212, 175, 55, 0.2);
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3column%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-.step-indicator.active::after {
-  background: linear-gradient(90deg, var(--gold), rgba(212, 175, 55, 0.2));
+/* Elite Typography */
+.perspective-1000 {
+  perspective: 1000px;
 }
 
-.step-indicator.completed::after {
-  background: var(--gold);
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(2deg); }
 }
 
-/* Ribbon decoration */
-.ribbon {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
+@keyframes pulse-gold {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
 }
 
-.ribbon::before {
-  content: 'VIP';
-  position: absolute;
-  top: 20px;
-  right: -25px;
-  width: 100px;
-  padding: 5px 0;
-  background: var(--gold);
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 4s ease-in-out infinite;
+}
+
+/* Premium Button Refinement */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+  background-size: 200% auto;
   color: var(--navy);
-  font-weight: bold;
-  font-size: 12px;
-  text-align: center;
-  transform: rotate(45deg);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  font-weight: 900;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.btn-gold:hover {
+  background-position: right center;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
 }

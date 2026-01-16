@@ -65,8 +65,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-gold/30 selection:text-white`}
       >
+        <div className="grain-overlay" />
         <CustomCursor />
         <SmoothScroll>
           {children}
