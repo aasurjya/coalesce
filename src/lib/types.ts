@@ -32,6 +32,7 @@ export interface EventInfo {
   upi_id: string;
   upi_qr_url: string;
   description: string;
+  hosted_by: string;
 }
 
 export interface AdminUser {

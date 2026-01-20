@@ -88,33 +88,13 @@ export default function Committee() {
               <div className="award-card rounded-[2.5rem] p-8 text-center transition-all duration-700 hover:border-gold/40 relative overflow-hidden h-full flex flex-col items-center bg-navy-light/20 backdrop-blur-sm">
                 {/* Decorative glow */}
                 <div className="absolute inset-0 bg-gradient-to-b from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                
-                {/* Role Badge for Chairperson */}
-                {index === 0 && (
-                  <div className="absolute top-6 right-6 z-20">
-                    <div className="bg-gold/10 backdrop-blur-md border border-gold/30 p-2 rounded-xl shadow-2xl">
-                      <Crown className="w-4 h-4 text-gold" />
-                    </div>
-                  </div>
-                )}
 
-                {/* Photo Container */}
+                {/* Photo Container - Black Background like Contacts */}
                 <div className="relative w-44 h-44 mb-8 p-1.5 border border-gold/10 group-hover:border-gold/40 rounded-[2.5rem] transition-all duration-700 ease-out transform group-hover:-translate-y-2 group-hover:rotate-2 shrink-0">
-                  <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-navy-light/50">
-                    {member.photo_url ? (
-                      <Image
-                        src={member.photo_url}
-                        alt={member.name}
-                        fill
-                        priority={index < 4}
-                        sizes="(max-width: 640px) 200px, 200px"
-                        className="object-cover transition-all duration-1000 filter grayscale md:group-hover:grayscale-0 group-hover:scale-110"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <User className="w-16 h-16 text-gold/20" />
-                      </div>
-                    )}
+                  <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-black flex items-center justify-center">
+                    <span className="text-6xl font-black text-gold/40 group-hover:text-gold transition-colors duration-500">
+                      {member.name.split(' ').map(n => n[0]).join('').toUpperCase()}
+                    </span>
                   </div>
                   
                   {/* Subtle corner accents */}
@@ -127,7 +107,7 @@ export default function Committee() {
                   <h3 className="text-2xl font-black text-foreground group-hover:text-gold transition-colors duration-500 tracking-tight line-clamp-1">
                     {member.name}
                   </h3>
-                  <p className="text-[10px] font-black text-gold/60 uppercase tracking-[0.3em]">{member.role}</p>
+                  <p className="text-[10px] font-black text-gold/60 uppercase tracking-[0.3em] hidden">{member.role}</p>
                 </div>
 
                 {/* Social Links - Improved visibility for mobile */}

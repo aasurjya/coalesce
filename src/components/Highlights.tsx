@@ -3,68 +3,34 @@ import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Trophy, Lightbulb, Users, Music, Mic2, Camera, Code, Palette } from 'lucide-react';
+import { Trophy, Lightbulb, Users, Music, Mic2, Camera, Code, Palette, Sparkles, Zap, Smile, Radio, Gift } from 'lucide-react';
+import { EVENT_HIGHLIGHTS } from '@/lib/constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const highlights = [
-  {
-    icon: Trophy,
-    title: 'Competitions',
-    description: 'Battle for glory across 15+ categories including technical, cultural, and sports events.',
-    color: 'from-yellow-500 to-amber-600',
-    img: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2670&auto=format&fit=crop',
-  },
-  {
-    icon: Code,
-    title: 'Hackathon',
-    description: '24-hour coding marathon with exciting problem statements and amazing prizes.',
-    color: 'from-blue-500 to-cyan-600',
-    img: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2670&auto=format&fit=crop',
-  },
-  {
-    icon: Lightbulb,
-    title: 'Workshops',
-    description: 'Learn from industry experts in AI, Web3, Design, and more cutting-edge fields.',
-    color: 'from-purple-500 to-pink-600',
-    img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2670&auto=format&fit=crop',
-  },
-  {
-    icon: Mic2,
-    title: 'Talks',
-    description: 'Inspiring keynotes from successful entrepreneurs and thought leaders.',
-    color: 'from-green-500 to-emerald-600',
-    img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=2670&auto=format&fit=crop',
-  },
-  {
-    icon: Music,
-    title: 'Concert',
-    description: 'End the day with an electrifying performance by surprise celebrity artists.',
-    color: 'from-red-500 to-rose-600',
-    img: 'https://images.unsplash.com/photo-1459749411177-042180ceea72?q=80&w=2670&auto=format&fit=crop',
-  },
-  {
-    icon: Palette,
-    title: 'Art Exhibition',
-    description: 'Showcase your creativity or admire stunning artworks from talented peers.',
-    color: 'from-orange-500 to-yellow-600',
-    img: 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=2670&auto=format&fit=crop',
-  },
-  {
-    icon: Camera,
-    title: 'Photography',
-    description: 'Capture moments and compete in our photography contest with great prizes.',
-    color: 'from-teal-500 to-cyan-600',
-    img: 'https://images.unsplash.com/photo-1452581766285-b004c643d147?q=80&w=2670&auto=format&fit=crop',
-  },
-  {
-    icon: Users,
-    title: 'Networking',
-    description: 'Connect with like-minded individuals, industry professionals, and potential mentors.',
-    color: 'from-indigo-500 to-purple-600',
-    img: 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?q=80&w=2670&auto=format&fit=crop',
-  },
-];
+const iconMap = {
+  Trophy,
+  Lightbulb,
+  Users,
+  Music,
+  Mic2,
+  Camera,
+  Code,
+  Palette,
+  Sparkles,
+  Zap,
+  Smile,
+  Radio,
+  Gift,
+};
+
+const highlights = EVENT_HIGHLIGHTS.map((highlight) => ({
+  icon: iconMap[highlight.icon as keyof typeof iconMap] || Music,
+  title: highlight.title,
+  description: highlight.description,
+  color: 'from-gold to-yellow-600',
+  img: highlight.img || 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2670&auto=format&fit=crop',
+}));
 
 import TextReveal from './TextReveal';
 

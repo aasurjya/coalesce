@@ -17,7 +17,7 @@ export default function Home() {
     <main className="relative min-h-screen bg-navy overflow-x-hidden">
       <Preloader onComplete={() => setIsLoaded(true)} />
       
-      <div className="relative">
+      <div className={`relative transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <Particles />
         <Navigation isVisible={isLoaded} />
         <Hero isVisible={isLoaded} />

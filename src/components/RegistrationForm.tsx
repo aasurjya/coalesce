@@ -37,6 +37,8 @@ export default function RegistrationForm() {
   const [step, setStep] = useState<Step>(1);
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [copiedUpi1, setCopiedUpi1] = useState(false);
+  const [copiedUpi2, setCopiedUpi2] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -87,6 +89,20 @@ export default function RegistrationForm() {
     setCopied(true);
     toast.success('UPI ID copied!');
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const copyUpi1 = () => {
+    navigator.clipboard.writeText('ahandique08-1@oksbi');
+    setCopiedUpi1(true);
+    toast.success('UPI ID copied!');
+    setTimeout(() => setCopiedUpi1(false), 2000);
+  };
+
+  const copyUpi2 = () => {
+    navigator.clipboard.writeText(EVENT_INFO.upi_id);
+    setCopiedUpi2(true);
+    toast.success('UPI ID copied!');
+    setTimeout(() => setCopiedUpi2(false), 2000);
   };
 
   const validateStep1 = () => {
@@ -293,7 +309,7 @@ export default function RegistrationForm() {
               <p className="text-gold/40 text-[10px] font-black uppercase tracking-[0.3em] mb-3">Amount to Remit</p>
               <div className="flex items-center justify-center gap-2">
                 <span className="text-gold/60 text-2xl font-light">₹</span>
-                <p className="text-6xl font-black text-gradient-gold tracking-tighter">{EVENT_INFO.fee}</p>
+                <p className="text-6xl font-black text-gradient-gold tracking-tighter">150</p>
               </div>
             </div>
 
@@ -313,18 +329,32 @@ export default function RegistrationForm() {
               </div>
               <p className="text-foreground/40 text-[9px] font-black uppercase tracking-[0.4em] mb-8">Scan for Instant Transfer</p>
               
-              <div className="w-full flex items-center gap-3">
-                <div className="flex-1 bg-navy-light/30 rounded-2xl px-6 py-4 flex items-center justify-between border border-gold/5 group/upi transition-all duration-500 hover:border-gold/20">
-                  <div className="flex flex-col">
-                    <span className="text-gold/40 text-[8px] font-black uppercase tracking-widest mb-1">UPI ID</span>
-                    <span className="text-foreground/80 font-mono text-sm font-bold tracking-tight">{EVENT_INFO.upi_id}</span>
+              <div className="w-full space-y-3">
+                {/* First UPI ID */}
+                <div className="bg-navy-light/30 rounded-2xl px-6 py-4 flex flex-col justify-between border border-gold/5 group/upi transition-all duration-500 hover:border-gold/20">
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-gold/40 text-[8px] font-black uppercase tracking-widest">UPI ID 1</span>
+                    <button
+                      onClick={copyUpi1}
+                      className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold/40 hover:text-gold hover:bg-gold/20 transition-all duration-300"
+                    >
+                      {copiedUpi1 ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    </button>
                   </div>
-                  <button
-                    onClick={copyUpiId}
-                    className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold/40 hover:text-gold hover:bg-gold/20 transition-all duration-300"
-                  >
-                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  </button>
+                  <span className="text-foreground/80 font-mono text-sm font-bold tracking-tight mt-3">ahandique08-1@oksbi</span>
+                </div>
+                {/* Second UPI ID */}
+                <div className="bg-navy-light/30 rounded-2xl px-6 py-4 flex flex-col justify-between border border-gold/5 group/upi transition-all duration-500 hover:border-gold/20">
+                  <div className="flex items-center justify-between w-full">
+                    <span className="text-gold/40 text-[8px] font-black uppercase tracking-widest">UPI ID 2</span>
+                    <button
+                      onClick={copyUpi2}
+                      className="w-10 h-10 rounded-xl bg-gold/10 flex items-center justify-center text-gold/40 hover:text-gold hover:bg-gold/20 transition-all duration-300"
+                    >
+                      {copiedUpi2 ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    </button>
+                  </div>
+                  <span className="text-foreground/80 font-mono text-sm font-bold tracking-tight mt-3">{EVENT_INFO.upi_id}</span>
                 </div>
               </div>
             </div>

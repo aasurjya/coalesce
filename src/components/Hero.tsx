@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Calendar, MapPin, Clock, ChevronDown, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, Clock, ChevronDown, Ticket, Sparkles } from 'lucide-react';
 import { EVENT_INFO } from '@/lib/constants';
 
 import Magnetic from './Magnetic';
@@ -14,6 +14,7 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
+  const hostedByRef = useRef<HTMLParagraphElement>(null);
   const detailsRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
   const decorRef = useRef<HTMLDivElement>(null);
@@ -40,28 +41,13 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
       0.1
     );
 
-    // Title animation - letter by letter
-    if (titleRef.current) {
-      const text = titleRef.current.innerText;
-      titleRef.current.innerHTML = text
-        .split('')
-        .map((char) => `<span class="inline-block min-w-[0.2em]">${char === ' ' ? '&nbsp;' : char}</span>`)
-        .join('');
-
-      tl.fromTo(
-        titleRef.current.querySelectorAll('span'),
-        { y: 50, opacity: 0, rotationX: -90, filter: 'blur(10px)' },
-        {
-          y: 0,
-          opacity: 1,
-          rotationX: 0,
-          filter: 'blur(0px)',
-          duration: 0.6,
-          stagger: 0.02,
-        },
-        0.2
-      );
-    }
+    // Title animation - simple fade in
+    tl.fromTo(
+      titleRef.current,
+      { y: 50, opacity: 0, scale: 0.9 },
+      { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: 'power4.out' },
+      0.2
+    );
 
     // Tagline
     tl.fromTo(
@@ -71,11 +57,19 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
       0.5
     );
 
-    // Details cards
+    // Hosted by
     tl.fromTo(
-      detailsRef.current?.children || [],
+      hostedByRef.current,
+      { y: 5, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.4 },
+      0.7
+    );
+
+    // Details card
+    tl.fromTo(
+      detailsRef.current,
       { y: 20, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.5, stagger: 0.08 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out' },
       0.6
     );
 
@@ -119,12 +113,12 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, { scope: heroRef });
+  }, { scope: heroRef, dependencies: [isVisible] });
 
   return (
     <section
       ref={heroRef}
-      className={`relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-10 overflow-hidden transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`relative min-h-screen flex flex-col items-center justify-center px-4 pt-20 pb-10 overflow-hidden ${isVisible ? 'opacity-100' : 'opacity-0'} transition-opacity duration-700`}
     >
       {/* Background Image with Overlay */}
       <div 
@@ -132,7 +126,7 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
         className="absolute inset-0 z-0 pointer-events-none"
       >
         <Image
-          src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2670&auto=format&fit=crop"
+          src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?q=80&w=2670&auto=format&fit=crop"
           alt="Event Background"
           fill
           priority
@@ -149,7 +143,7 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
       {/* Content */}
       <div className="relative z-10 text-center max-w-5xl mx-auto">
         {/* Trophy decoration */}
-        <div ref={decorRef} className="mb-8 opacity-0">
+        <div ref={decorRef} className="mb-8">
           <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-gradient-to-br from-gold-dark to-gold glow-gold-intense relative group">
             <Sparkles className="w-12 h-12 text-navy relative z-10" />
             <div className="absolute inset-0 rounded-full bg-gold/30 blur-md group-hover:scale-125 transition-transform duration-500" />
@@ -159,40 +153,65 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
         {/* Main title */}
         <h1
           ref={titleRef}
-          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-gradient-gold mb-6 tracking-tight perspective-1000 opacity-0 uppercase italic"
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-gradient-gold mb-6 tracking-tight perspective-1000 uppercase italic"
         >
           {EVENT_INFO.name}
         </h1>
 
-        {/* Tagline & Date Reveal */}
-        <div className="flex flex-col items-center gap-6 mb-16">
-          <p
-            ref={taglineRef}
-            className="text-lg sm:text-xl text-gold/60 font-black tracking-[0.5em] uppercase opacity-0 pl-[0.5em]"
-          >
-            {EVENT_INFO.tagline}
-          </p>
-          
-          <div className="flex items-center gap-4 opacity-0 animate-fade-in" style={{ animationDelay: '1.2s', animationFillMode: 'forwards' }}>
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-gold/30" />
-            <div className="px-8 py-3 rounded-full border border-gold/20 bg-gold/5 backdrop-blur-md">
-              <p className="text-2xl sm:text-3xl font-black text-white tracking-tighter uppercase italic">
-                {EVENT_INFO.date}
-              </p>
+        {/* Tagline */}
+        <p
+          ref={taglineRef}
+          className="mb-8 text-lg sm:text-xl text-gold/60 font-black tracking-[0.5em] uppercase pl-[0.5em]"
+        >
+          {EVENT_INFO.tagline}
+        </p>
+
+        {/* Hosted by */}
+        <p ref={hostedByRef} className="mb-8 text-sm text-gold/40 font-medium tracking-[0.3em] uppercase">
+          Hosted by {EVENT_INFO.hosted_by}
+        </p>
+
+        {/* Event Details Card */}
+        <div 
+          ref={detailsRef} 
+          className="w-full max-w-4xl mx-auto mb-12 p-6 md:p-8 rounded-3xl border border-gold/20 bg-navy/30 backdrop-blur-2xl shadow-2xl shadow-gold/10"
+        >
+          <div className="flex flex-col md:flex-row items-center justify-around gap-6 md:gap-8">
+            <div className="flex items-center gap-4 text-left">
+              <Calendar className="w-7 h-7 text-gold/60 shrink-0" />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-gold/40">Date</p>
+                <p className="text-lg font-black text-white tracking-tighter">{EVENT_INFO.date}</p>
+              </div>
             </div>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-gold/30" />
+            <div className="w-px h-12 bg-gold/20 hidden md:block" />
+            <div className="flex items-center gap-4 text-left">
+              <Clock className="w-7 h-7 text-gold/60 shrink-0" />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-gold/40">Time</p>
+                <p className="text-lg font-black text-white tracking-tighter">{EVENT_INFO.time}</p>
+              </div>
+            </div>
+            <div className="w-px h-12 bg-gold/20 hidden md:block" />
+            <div className="flex items-center gap-4 text-left">
+              <MapPin className="w-7 h-7 text-gold/60 shrink-0" />
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-gold/40">Venue</p>
+                <p className="text-lg font-black text-white tracking-tighter">{EVENT_INFO.location}</p>
+              </div>
+            </div>
           </div>
         </div>
 
         {/* CTA Buttons - Premium Redesign */}
-        <div ref={ctaRef} className="flex flex-col sm:flex-row justify-center gap-8 mb-20 opacity-0">
+        <div ref={ctaRef} className="flex flex-col sm:flex-row justify-center gap-8 mb-12">
           <Magnetic strength={0.2}>
             <Link
               href="/register"
               className="group relative px-14 py-6 rounded-[2rem] bg-gold text-navy text-xl font-black uppercase tracking-[0.1em] shadow-[0_0_40px_rgba(212,175,55,0.3)] transition-all duration-500 hover:scale-105 hover:shadow-[0_0_60px_rgba(212,175,55,0.5)] overflow-hidden"
             >
               <div className="relative z-10 flex items-center gap-4">
-                <Sparkles className="w-6 h-6 animate-pulse" />
+                <Ticket className="w-6 h-6" />
                 <span>Register Now</span>
               </div>
               <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -210,44 +229,21 @@ export default function Hero({ isVisible }: { isVisible: boolean }) {
           </Magnetic>
         </div>
 
-        {/* Event details cards (Simplified & Elegant) */}
-        <div
-          ref={detailsRef}
-          className="flex flex-wrap justify-center gap-8 opacity-0"
-        >
-          <div className="flex items-center gap-3 group cursor-default">
-            <Clock className="w-5 h-5 text-gold/40 group-hover:text-gold transition-colors" />
-            <div className="text-left">
-              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gold/30">Commences</p>
-              <p className="text-foreground/70 font-bold text-sm tracking-tight group-hover:text-foreground transition-colors">{EVENT_INFO.time}</p>
-            </div>
-          </div>
-          <div className="w-px h-10 bg-gold/10 hidden sm:block" />
-          <div className="flex items-center gap-3 group cursor-default">
-            <MapPin className="w-5 h-5 text-gold/40 group-hover:text-gold transition-colors" />
-            <div className="text-left">
-              <p className="text-[9px] font-black uppercase tracking-[0.3em] text-gold/30">Location</p>
-              <p className="text-foreground/70 font-bold text-sm tracking-tight group-hover:text-foreground transition-colors">{EVENT_INFO.venue}</p>
-            </div>
-          </div>
-        </div>
-
         {/* Fee badge */}
-        <div className="mt-12 flex items-center justify-center gap-2 opacity-0 animate-fade-in" style={{ animationDelay: '2.5s', animationFillMode: 'forwards' }}>
+        <div className="mt-12 flex items-center justify-center gap-2">
           <div className="h-px w-8 bg-gold/30" />
           <span className="inline-block bg-gold/10 border border-gold/30 text-gold px-6 py-2 rounded-full text-sm font-medium tracking-widest uppercase">
-            Pass Price: ₹{EVENT_INFO.fee}
+            Entry Fee: ₹{EVENT_INFO.fee} | Early Bird: ₹150 (First 50)
           </span>
           <div className="h-px w-8 bg-gold/30" />
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2`}>
         <span className="text-[10px] uppercase tracking-[0.3em] text-gold/40">Scroll</span>
         <ChevronDown className="w-6 h-6 text-gold animate-bounce" />
       </div>
     </section>
   );
 }
-

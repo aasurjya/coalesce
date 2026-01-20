@@ -86,7 +86,7 @@ export default function About() {
               ref={titleRef}
               className="text-4xl md:text-6xl font-bold text-gradient-gold mb-6 md:mb-8"
             >
-              Where Excellence Meets Innovation
+              Where Everyone Comes Together
             </h2>
           </TextReveal>
         </div>
@@ -96,7 +96,7 @@ export default function About() {
           <div ref={imageRef} className="relative aspect-[4/5] sm:aspect-video lg:aspect-square rounded-[3rem] overflow-hidden group shadow-2xl border border-gold/10">
             <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent z-10 opacity-90" />
             <Image 
-              src="https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2669&auto=format&fit=crop" 
+              src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2669&auto=format&fit=crop" 
               alt="Event Atmosphere" 
               fill
               priority
@@ -107,15 +107,7 @@ export default function About() {
             {/* Glossy overlay effect */}
             <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
             
-            <div className="absolute bottom-10 left-10 z-20">
-              <div className="award-card p-8 rounded-[2rem] backdrop-blur-2xl border-gold/40 shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-2 transition-transform duration-700">
-                <p className="text-gold font-black text-3xl tracking-tighter mb-1 italic">Since 2018</p>
-                <p className="text-foreground/50 text-[10px] font-black uppercase tracking-[0.3em]">Empowering Student Leaders</p>
-              </div>
-            </div>
-
             {/* Corner Accents */}
-            <div className="absolute top-8 left-8 w-12 h-12 border-t-2 border-l-2 border-gold/20 rounded-tl-2xl group-hover:border-gold/60 transition-colors duration-700" />
             <div className="absolute bottom-8 right-8 w-12 h-12 border-b-2 border-r-2 border-gold/20 rounded-br-2xl group-hover:border-gold/60 transition-colors duration-700" />
           </div>
 
@@ -127,16 +119,15 @@ export default function About() {
               </div>
               
               <div className="relative z-10">
-                <p className="text-xl md:text-2xl text-foreground/90 font-medium leading-relaxed mb-10 tracking-tight">
-                  {EVENT_INFO.description}
-                </p>
+                <div className="space-y-6 mb-10">
+                  <p className="text-lg md:text-xl text-foreground/90 font-medium leading-relaxed tracking-tight">
+                    Coalesce 1.0 isn&apos;t just an event, it&apos;s a movement that brings us together to create memories, showcase our talents, to feel the urge of freedom from all that academic pressure.
+                  </p>
+                  <p className="text-lg md:text-xl text-foreground/90 font-medium leading-relaxed tracking-tight">
+                    Register to have fun, to preserve a memory with us.
+                  </p>
+                </div>
                 <div className="flex flex-col gap-10">
-                  <div className="relative pl-10">
-                    <div className="absolute left-0 top-2 bottom-2 w-1.5 bg-gradient-to-b from-gold via-gold/50 to-transparent rounded-full shadow-[0_0_15px_rgba(212,175,55,0.5)]" />
-                    <p className="text-foreground/70 leading-relaxed text-lg md:text-xl italic font-medium tracking-tight">
-                      &quot;COALESCE isn&apos;t just an event; it&apos;s a movement that brings together the brightest minds to define the future of technology and culture.&quot;
-                    </p>
-                  </div>
                   <div className="flex items-center gap-4 group/venue cursor-default">
                     <div className="w-12 h-12 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/20 group-hover/venue:bg-gold group-hover/venue:text-navy transition-all duration-500">
                       <Zap className="w-6 h-6" />
@@ -151,26 +142,11 @@ export default function About() {
           </div>
         </div>
 
-        {/* Stats */}
-        <div
-          ref={statsRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8"
-        >
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="award-card rounded-[2rem] p-6 md:p-10 text-center group hover:scale-105 transition-all duration-500 hover:border-gold/50 cursor-default relative overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-2xl bg-gold/10 mb-6 group-hover:bg-gold/20 transition-all duration-500 group-hover:rotate-6 relative z-10">
-                <stat.icon className="w-6 h-6 md:w-8 md:h-8 text-gold" />
-              </div>
-              <div className="text-3xl md:text-5xl font-black text-gradient-gold mb-2 relative z-10 tabular-nums">
-                {stat.value}
-              </div>
-              <div className="text-foreground/40 text-[10px] md:text-xs font-black tracking-[0.2em] uppercase relative z-10">{stat.label}</div>
-            </div>
-          ))}
+        {/* Tagline Section */}
+        <div className="text-center mt-20 md:mt-24">
+          <p className="text-xl md:text-3xl lg:text-4xl font-bold text-gradient-gold tracking-tight leading-relaxed">
+            Perform. Impress. Grab Mr Coalesce and Miss Coalesce
+          </p>
         </div>
       </div>
     </section>

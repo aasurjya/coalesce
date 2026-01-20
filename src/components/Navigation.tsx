@@ -12,27 +12,15 @@ export default function Navigation({ isVisible }: { isVisible: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-  const linksRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     if (!isVisible) return;
 
-    const tl = gsap.timeline();
-    
-    tl.fromTo(
+    gsap.fromTo(
       navRef.current,
       { y: -100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: 'power4.out' }
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out', delay: 0.8 }
     );
-
-    if (linksRef.current) {
-      tl.fromTo(
-        linksRef.current.children,
-        { y: -20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'power2.out' },
-        '-=0.5'
-      );
-    }
   }, { scope: navRef, dependencies: [isVisible] });
 
   useGSAP(() => {
@@ -52,7 +40,7 @@ export default function Navigation({ isVisible }: { isVisible: boolean }) {
         );
       }
     }
-  }, [isOpen]);
+  }, { dependencies: [isOpen], scope: menuRef });
 
   const navLinks = [
     { href: '#about', label: 'About' },
@@ -91,7 +79,7 @@ export default function Navigation({ isVisible }: { isVisible: boolean }) {
           </Link>
 
           {/* Desktop Navigation */}
-          <div ref={linksRef} className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) =>
               link.isButton ? (
                 <Magnetic key={link.href} strength={0.3}>

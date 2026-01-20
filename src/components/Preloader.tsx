@@ -95,6 +95,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
 
         {/* The Brand Revelation */}
         <div ref={titleRef} className="text-center">
+          <p className="text-gold/60 text-lg font-bold tracking-[0.4em] uppercase mb-6">Loading...</p>
           <h1 className="text-6xl md:text-7xl font-black tracking-[-0.08em] text-gradient-gold uppercase leading-none italic drop-shadow-[0_0_30px_rgba(212,175,55,0.3)]">
             COALESCE
           </h1>
@@ -119,6 +120,3 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     </div>
   );
 }
-
-
-
