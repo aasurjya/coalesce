@@ -428,13 +428,13 @@ export default function AdminDashboard() {
       {/* Admin Footer */}
       <footer className="max-w-7xl mx-auto px-4 py-8 border-t border-gold/10 mt-12 flex flex-col md:flex-row justify-between items-center gap-4 text-foreground/20">
         <p className="text-[10px] font-bold uppercase tracking-widest">COALESCE 2026 Management Console</p>
-        <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest">
-          <div className="flex items-center gap-2">
-            <span>Developed by</span>
-            <a href="https://aasurjya.in" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold-light transition-colors">Aasurjya</a>
+        <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 text-[10px] font-bold uppercase tracking-widest">
+          <div className="flex flex-col items-center md:items-start gap-1">
+            <span>Architected by</span>
+            <a href="https://aasurjya.in" target="_blank" rel="noopener noreferrer" className="text-gold hover:text-gold/80 transition-colors">Aasurjya Bikash Handique</a>
           </div>
-          <div className="h-1 w-1 rounded-full bg-gold/20" />
-          <a href="mailto:corp.surjya@gmail.com" className="hover:text-gold transition-colors lowercase tracking-normal">corp.surjya@gmail.com</a>
+          <div className="h-1 w-1 rounded-full bg-gold/20 hidden md:block" />
+          <a href="mailto:corp.asurjya@gmail.com" className="hover:text-gold transition-colors lowercase tracking-normal">corp.asurjya@gmail.com</a>
         </div>
       </footer>
 

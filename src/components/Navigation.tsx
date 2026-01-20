@@ -142,23 +142,24 @@ export default function Navigation({ isVisible }: { isVisible: boolean }) {
 
             {/* Developer Credit in Mobile Menu */}
             <div className="flex flex-col items-center gap-4 pt-10 border-t border-gold/5 w-full max-w-xs">
-              <div className="flex flex-col items-center gap-1.5 opacity-40">
-                <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-gold/60">Digital Architecture</span>
-                <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center gap-1.5">
+                <span className="text-[8px] font-bold uppercase tracking-[0.4em] text-gold/60">Architected by</span>
+                <div className="flex flex-col items-center gap-1.5">
                   <a 
                     href="https://aasurjya.in" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="text-sm font-black uppercase tracking-[0.2em] text-gold"
+                    className="text-sm font-black uppercase tracking-[0.2em] text-gold hover:text-gold/80 transition-colors"
                   >
-                    Aasurjya
+                    Aasurjya Bikash Handique
                   </a>
                   <a 
-                    href="mailto:corp.surjya@gmail.com" 
-                    className="text-[9px] text-gold/40 lowercase tracking-normal italic mt-1"
+                    href="mailto:corp.asurjya@gmail.com" 
+                    className="text-[9px] text-gold/60 lowercase tracking-normal hover:text-gold transition-colors"
                   >
-                    corp.surjya@gmail.com
+                    corp.asurjya@gmail.com
                   </a>
+                  <span className="text-[8px] text-gold/40 tracking-wider">To know more visit: aasurjya.in</span>
                 </div>
               </div>
             </div>

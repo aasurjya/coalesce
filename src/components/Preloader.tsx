@@ -110,9 +110,10 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       </div>
 
       {/* Subtle Developer Signature */}
-      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-20 flex flex-col items-center gap-1.5 pointer-events-none">
-        <span className="text-[7px] font-bold uppercase tracking-[0.4em] text-gold/60">Digital Architecture</span>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gold/40">Aasurjya</span>
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-30 flex flex-col items-center gap-1.5 pointer-events-none">
+        <span className="text-[7px] font-bold uppercase tracking-[0.4em] text-gold/60">Architected by</span>
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gold/40">Aasurjya Bikash Handique</span>
+        <span className="text-[7px] font-medium lowercase tracking-wider text-gold/30">corp.asurjya@gmail.com</span>
       </div>
 
       {/* Luxury Scanline Effect */}

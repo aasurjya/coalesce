@@ -131,25 +131,27 @@ export default function Footer() {
             
             {/* Elite Architecture Credit */}
             <div className="flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-3">
-              <div className="flex items-center gap-2">
+              <div className="flex flex-col items-center lg:items-start gap-2">
                 <span className="text-foreground/20 text-[9px] font-bold uppercase tracking-widest">Architected by</span>
-                <a 
-                  href="https://aasurjya.in" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gold/40 hover:text-gold transition-all duration-300 flex items-center gap-1.5 group/dev font-black text-[11px] uppercase tracking-[0.2em]"
-                >
-                  Aasurjya
-                  <ExternalLink className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-0.5" />
-                </a>
+                <div className="flex flex-col gap-1.5">
+                  <a 
+                    href="https://aasurjya.in" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-gold hover:text-gold/80 transition-all duration-300 flex items-center gap-1.5 group/dev font-black text-[11px] uppercase tracking-[0.2em]"
+                  >
+                    Aasurjya Bikash Handique
+                    <ExternalLink className="w-2.5 h-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-y-0.5" />
+                  </a>
+                  <a 
+                    href="mailto:corp.asurjya@gmail.com" 
+                    className="text-gold/60 hover:text-gold transition-colors text-[9px] font-bold lowercase tracking-wider"
+                  >
+                    corp.asurjya@gmail.com
+                  </a>
+                  <span className="text-gold/40 text-[8px] font-medium tracking-wider">To know more visit: aasurjya.in</span>
+                </div>
               </div>
-              <div className="h-1 w-1 rounded-full bg-gold/10 hidden md:block" />
-              <a 
-                href="mailto:corp.surjya@gmail.com" 
-                className="text-gold/20 hover:text-gold transition-colors text-[9px] font-bold lowercase tracking-wider italic"
-              >
-                corp.surjya@gmail.com
-              </a>
             </div>
           </div>
 
