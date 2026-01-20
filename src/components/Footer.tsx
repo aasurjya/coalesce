@@ -54,7 +54,7 @@ export default function Footer() {
               <span className="text-3xl font-black tracking-tighter text-gradient-gold uppercase">{EVENT_INFO.name}</span>
             </Link>
             <p className="text-foreground/50 text-base md:text-lg leading-relaxed max-w-md font-medium">
-              {EVENT_INFO.tagline}. A premier convergence of talent and innovation redefining the standard of excellence since 2018.
+              {EVENT_INFO.tagline}. A premier convergence of talent and innovation redefining the standard of excellence.
             </p>
             {/* Social Matrix */}
             <div className="flex gap-4">
@@ -114,8 +114,8 @@ export default function Footer() {
                 <div className="w-12 h-12 rounded-xl bg-navy-light/50 flex items-center justify-center border border-gold/5 text-gold/40 group-hover/item:border-gold/40 group-hover/item:text-gold group-hover/item:bg-gold/10 transition-all duration-500 shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
-                <a href="mailto:contact@coalesce.event" className="text-foreground/40 hover:text-gold transition-colors text-[11px] font-black uppercase tracking-[0.15em] pt-0.5">
-                  contact@coalesce.event
+                <a href="mailto:ahandique08@gmail.com" className="text-foreground/40 hover:text-gold transition-colors text-[11px] font-black uppercase tracking-[0.15em] pt-0.5">
+                  ahandique08@gmail.com
                 </a>
               </li>
             </ul>
@@ -149,6 +149,7 @@ export default function Footer() {
                   >
                     corp.asurjya@gmail.com
                   </a>
+                  <span className="text-gold/60 text-[9px] font-bold uppercase tracking-wider">IIT JODHPUR</span>
                   <span className="text-gold/40 text-[8px] font-medium tracking-wider">To know more visit: aasurjya.in</span>
                 </div>
               </div>
